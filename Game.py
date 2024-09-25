@@ -1,5 +1,6 @@
 from Display import Display
 from IA import IA
+import random
 
 class Game:
     def __init__(self, modo_jogo: int = 2, dificuldade: int = 3, debug_mode: int = 3, primeiro:int = 1):
@@ -23,8 +24,12 @@ class Game:
         # Verifica se a IA começa jogando
         if self.primeiro == 2 and self.modo_jogo == 2:
             self.display.status_label.config(text="IA está pensando...")
-            self.display.root.after(200, self.IA.jogada_ia, self.game, self.debug_mode, 'X', self.dificuldade)
-        
+            #self.display.root.after(200, self.IA.jogada_ia, self.game, self.debug_mode, 'X', self.dificuldade, self.checar_vitoria, self.display)
+            i,j = self.IA.pos(random.randint(1, 9))
+            self.game[i][j] = 'X'
+            self.display.update_buttons(self.game)
+            self.update_player()
+
         self.display.root.mainloop()
     
     def update_player(self):

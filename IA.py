@@ -23,7 +23,7 @@ class IA:
         else:
             display.status_label.config(text="Sua vez!")
     
-    def pos(p):
+    def pos(self, p):
         return (p-1) // 3, (p-1) % 3
 
     def melhor_jogada(self,game, debug_mode, jogador, alturamax, checar_vitoria):
